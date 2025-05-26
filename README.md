@@ -46,3 +46,27 @@ streamlit run cv_ranking_app.py
 - Sign in to your OpenAI account
 - Click "Create new secret key"
 - Copy your API key
+
+### xAI (Grok)
+- Visit xAI Console
+- Sign in with your account
+- Navigate to API Keys section
+- Generate a new API key
+
+## 📖 Usage Guide
+### Step 1: Configure AI Settings
+- Select your preferred AI provider (Gemini, OpenAI, or xAI)
+- Choose the specific model you want to use
+- Enter your API key securely
+
+### Step 2: Upload Your CV
+- Option A: Upload a file (PDF, DOCX, or TXT)
+- Option B: Copy and paste your CV content directly
+
+### Step 3: Add Job Description
+Paste the complete job description including:
+
+- Job requirements
+- Required skills
+- Responsibilities
+- Qualifications
