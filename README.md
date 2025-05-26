@@ -2,6 +2,8 @@
 
 A comprehensive AI-powered CV analysis tool that evaluates resumes against job descriptions using multiple AI providers (Gemini, OpenAI GPT, and xAI Grok). Get detailed feedback, section-wise scoring, and actionable improvement suggestions.
 
+![Project Overview](docs/pic1.png) 
+
 # 🌟 Features
 
 - Multi-AI Provider Support: Choose between Google Gemini, OpenAI GPT, or xAI Grok
@@ -71,8 +73,12 @@ Paste the complete job description including:
 - Responsibilities
 - Qualifications
 
+![Project Overview](docs/pic2.png) 
+
 ### Step 4: Analyze
 Click "🚀 Analyze CV" to get comprehensive feedback
+
+![Project Overview](docs/pic3.png) 
 
 ## 📊 Analysis Output
 The system provides:
@@ -83,6 +89,8 @@ The system provides:
 - Weaknesses: Areas needing improvement
 - Missing Skills: Skills mentioned in job description but not in CV
 - Recommendations: Specific, actionable improvement suggestions
+
+![Project Overview](docs/pic4.png) 
 
 # 🛠️ Technical Details
 ## Dependencies
