@@ -94,3 +94,23 @@ requests>=2.31.0
 PyPDF2>=3.0.1
 python-docx>=0.8.11
 ```
+
+## File Processing
+- **PDF**: Extracted using PyPDF2
+- **DOCX**: Processed with python-docx
+- **TXT**: Direct text reading
+
+## Security Features
+- API keys are input as password fields (hidden)
+- Keys are not stored or logged
+- Session-based processing only
+
+# 🔮 Future Enhancements
+## Planned features:
+
+- Batch CV processing
+- CV comparison functionality
+- Export analysis reports
+- Integration with more AI providers
+- Advanced scoring algorithms
+- Industry-specific analysis templates
