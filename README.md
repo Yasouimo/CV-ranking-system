@@ -33,3 +33,16 @@ pip install -r requirements.txt
 ```bash
 streamlit run cv_ranking_app.py
 ```
+
+## 🔑 Getting API Keys
+### Google Gemini
+- Visit Google AI Studio
+- Sign in with your Google account
+- Click "Create API Key"
+- Copy your API key
+
+### OpenAI
+- Visit OpenAI Platform
+- Sign in to your OpenAI account
+- Click "Create new secret key"
+- Copy your API key
