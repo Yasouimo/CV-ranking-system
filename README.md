@@ -70,3 +70,27 @@ Paste the complete job description including:
 - Required skills
 - Responsibilities
 - Qualifications
+
+### Step 4: Analyze
+Click "🚀 Analyze CV" to get comprehensive feedback
+
+## 📊 Analysis Output
+The system provides:
+
+- Overall Score: Match percentage (0-100)
+- Section-wise Analysis: Individual scores for each CV section
+- Strengths: What works well in your CV
+- Weaknesses: Areas needing improvement
+- Missing Skills: Skills mentioned in job description but not in CV
+- Recommendations: Specific, actionable improvement suggestions
+
+# 🛠️ Technical Details
+## Dependencies
+```bash
+streamlit>=1.28.0
+google-generativeai>=0.3.0
+openai>=1.0.0
+requests>=2.31.0
+PyPDF2>=3.0.1
+python-docx>=0.8.11
+```
