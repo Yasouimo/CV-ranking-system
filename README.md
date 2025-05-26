@@ -1,12 +1,21 @@
-# Resume Analyzer Web App 📝💻
+# 🎯 CV Ranking System
 
-GitHub last commit Python Version
+A comprehensive AI-powered CV analysis tool that evaluates resumes against job descriptions using multiple AI providers (Gemini, OpenAI GPT, and xAI Grok). Get detailed feedback, section-wise scoring, and actionable improvement suggestions.
 
-An interactive web application that analyzes resumes based on a job description using Large Language models(LLms)
+# 🌟 Features
 
-# 🚀 Features
+- Multi-AI Provider Support: Choose between Google Gemini, OpenAI GPT, or xAI Grok
+- File Format Support: Upload PDF, DOCX, or TXT files
+- Section-wise Analysis: Detailed breakdown of CV sections with individual scores
+- Comprehensive Scoring: Overall CV match score against job requirements
+- Actionable Feedback: Specific improvement suggestions for each section
+- Secure API Key Handling: Users provide their own API keys (not stored)
+- Modern UI: Clean, intuitive Streamlit interface
+- Real-time Analysis: Instant AI-powered CV evaluation
 
-Upload job descriptions and resumes in PDF format.
-Process resumes to extract names, emails, and text content.
-Calculate the similarity between the job description and each resume.
-Rank resumes based on similarity percentage.
+# 🚀 Quick Start
+
+## Prerequisites
+
+- Python 3.7 or higher
+- API key from at least one of the supported providers
