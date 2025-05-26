@@ -25,3 +25,7 @@ A comprehensive AI-powered CV analysis tool that evaluates resumes against job d
 ```bash
 git clone https://github.com/Yasouimo/CV-ranking-system.git
 ```
+### Install required packages:
+```bash
+pip install -r requirements.txt
+```
