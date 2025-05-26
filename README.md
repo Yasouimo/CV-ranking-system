@@ -124,3 +124,4 @@ python-docx>=0.8.11
 - Industry-specific analysis templates
 
 # Contact
+- Project Creator : **Bellmir Yahya**
