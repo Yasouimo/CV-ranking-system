@@ -29,3 +29,7 @@ git clone https://github.com/Yasouimo/CV-ranking-system.git
 ```bash
 pip install -r requirements.txt
 ```
+### Run the application:
+```bash
+streamlit run cv_ranking_app.py
+```
