@@ -122,3 +122,5 @@ python-docx>=0.8.11
 - Integration with more AI providers
 - Advanced scoring algorithms
 - Industry-specific analysis templates
+
+# Contact
