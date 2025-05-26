@@ -19,3 +19,9 @@ A comprehensive AI-powered CV analysis tool that evaluates resumes against job d
 
 - Python 3.7 or higher
 - API key from at least one of the supported providers
+
+## Installation
+### Clone or create the project:
+```bash
+git clone https://github.com/Yasouimo/CV-ranking-system.git
+```
