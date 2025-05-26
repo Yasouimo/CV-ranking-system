@@ -126,3 +126,5 @@ python-docx>=0.8.11
 # Contact
 - Project Creator : **Bellmir Yahya**
 - Github : [Github Link](https://github.com/Yasouimo)
+- LinkedIn : [LinkedIn Link](https://www.linkedin.com/in/yahya-bellmir-a54176284/)
+- Email : yahyabellmir@gmail.com
