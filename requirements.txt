@@ -4,3 +4,5 @@ openai>=1.0.0
 requests>=2.25.0
 PyPDF2>=3.0.0
 python-docx>=0.8.11
+anthropic>=0.7.0
+cohere>=4.21.0
