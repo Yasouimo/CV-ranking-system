@@ -123,6 +123,11 @@ python-docx>=0.8.11
 - Advanced scoring algorithms
 - Industry-specific analysis templates
 
+# Deployement:
+To test the app please visit the link below :
+
+https://cv-ranking-system.streamlit.app/
+
 # Contact
 - Project Creator : **Bellmir Yahya**
 - Github : [Github Link](https://github.com/Yasouimo)
