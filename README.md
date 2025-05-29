@@ -126,7 +126,7 @@ python-docx>=0.8.11
 # Deployement:
 To test the app please visit the link below :
 
-https://cv-ranking-system.streamlit.app/
+[Streamlit app](https://cv-ranking-system.streamlit.app/)
 
 # Contact
 - Project Creator : **Bellmir Yahya**
