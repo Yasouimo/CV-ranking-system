@@ -6,6 +6,8 @@ import PyPDF2
 import docx
 import io
 import json
+import anthropic
+import cohere
 
 # Configure the page
 st.set_page_config(
@@ -45,11 +47,11 @@ def call_gemini_api(api_key, model_name, cv_text, job_description):
 def call_openai_api(api_key, model_name, cv_text, job_description):
     """Call OpenAI API"""
     try:
-        openai.api_key = api_key
+        client = openai.OpenAI(api_key=api_key)
         
         prompt = create_analysis_prompt(cv_text, job_description)
         
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model=model_name,
             messages=[
                 {"role": "system", "content": "You are an expert HR professional and recruiter."},
@@ -61,6 +63,43 @@ def call_openai_api(api_key, model_name, cv_text, job_description):
         return response.choices[0].message.content
     except Exception as e:
         raise Exception(f"OpenAI API Error: {str(e)}")
+
+def call_anthropic_api(api_key, model_name, cv_text, job_description):
+    """Call Anthropic Claude API"""
+    try:
+        client = anthropic.Anthropic(api_key=api_key)
+        
+        prompt = create_analysis_prompt(cv_text, job_description)
+        
+        response = client.messages.create(
+            model=model_name,
+            max_tokens=3000,
+            temperature=0.7,
+            system="You are an expert HR professional and recruiter.",
+            messages=[
+                {"role": "user", "content": prompt}
+            ]
+        )
+        return response.content[0].text
+    except Exception as e:
+        raise Exception(f"Anthropic API Error: {str(e)}")
+
+def call_cohere_api(api_key, model_name, cv_text, job_description):
+    """Call Cohere API"""
+    try:
+        co = cohere.Client(api_key)
+        
+        prompt = f"You are an expert HR professional and recruiter.\n\n{create_analysis_prompt(cv_text, job_description)}"
+        
+        response = co.generate(
+            model=model_name,
+            prompt=prompt,
+            max_tokens=3000,
+            temperature=0.7
+        )
+        return response.generations[0].text
+    except Exception as e:
+        raise Exception(f"Cohere API Error: {str(e)}")
 
 def call_xai_api(api_key, model_name, cv_text, job_description):
     """Call xAI (Grok) API"""
@@ -90,6 +129,93 @@ def call_xai_api(api_key, model_name, cv_text, job_description):
         return result["choices"][0]["message"]["content"]
     except Exception as e:
         raise Exception(f"xAI API Error: {str(e)}")
+
+def call_mistral_api(api_key, model_name, cv_text, job_description):
+    """Call Mistral AI API"""
+    try:
+        url = "https://api.mistral.ai/v1/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        prompt = create_analysis_prompt(cv_text, job_description)
+        
+        data = {
+            "model": model_name,
+            "messages": [
+                {"role": "system", "content": "You are an expert HR professional and recruiter."},
+                {"role": "user", "content": prompt}
+            ],
+            "temperature": 0.7,
+            "max_tokens": 3000
+        }
+        
+        response = requests.post(url, headers=headers, json=data)
+        response.raise_for_status()
+        
+        result = response.json()
+        return result["choices"][0]["message"]["content"]
+    except Exception as e:
+        raise Exception(f"Mistral API Error: {str(e)}")
+
+def call_perplexity_api(api_key, model_name, cv_text, job_description):
+    """Call Perplexity API"""
+    try:
+        url = "https://api.perplexity.ai/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        prompt = create_analysis_prompt(cv_text, job_description)
+        
+        data = {
+            "model": model_name,
+            "messages": [
+                {"role": "system", "content": "You are an expert HR professional and recruiter."},
+                {"role": "user", "content": prompt}
+            ],
+            "temperature": 0.7,
+            "max_tokens": 3000
+        }
+        
+        response = requests.post(url, headers=headers, json=data)
+        response.raise_for_status()
+        
+        result = response.json()
+        return result["choices"][0]["message"]["content"]
+    except Exception as e:
+        raise Exception(f"Perplexity API Error: {str(e)}")
+
+def call_together_api(api_key, model_name, cv_text, job_description):
+    """Call Together AI API"""
+    try:
+        url = "https://api.together.xyz/v1/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        prompt = create_analysis_prompt(cv_text, job_description)
+        
+        data = {
+            "model": model_name,
+            "messages": [
+                {"role": "system", "content": "You are an expert HR professional and recruiter."},
+                {"role": "user", "content": prompt}
+            ],
+            "temperature": 0.7,
+            "max_tokens": 3000
+        }
+        
+        response = requests.post(url, headers=headers, json=data)
+        response.raise_for_status()
+        
+        result = response.json()
+        return result["choices"][0]["message"]["content"]
+    except Exception as e:
+        raise Exception(f"Together AI API Error: {str(e)}")
 
 def create_analysis_prompt(cv_text, job_description):
     """Create the analysis prompt for any AI model"""
@@ -131,8 +257,18 @@ def analyze_cv_with_ai(provider, api_key, model_name, cv_text, job_description):
         return call_gemini_api(api_key, model_name, cv_text, job_description)
     elif provider == "OpenAI":
         return call_openai_api(api_key, model_name, cv_text, job_description)
+    elif provider == "Anthropic (Claude)":
+        return call_anthropic_api(api_key, model_name, cv_text, job_description)
+    elif provider == "Cohere":
+        return call_cohere_api(api_key, model_name, cv_text, job_description)
     elif provider == "xAI (Grok)":
         return call_xai_api(api_key, model_name, cv_text, job_description)
+    elif provider == "Mistral AI":
+        return call_mistral_api(api_key, model_name, cv_text, job_description)
+    elif provider == "Perplexity":
+        return call_perplexity_api(api_key, model_name, cv_text, job_description)
+    elif provider == "Together AI":
+        return call_together_api(api_key, model_name, cv_text, job_description)
     else:
         raise Exception("Unsupported AI provider")
 
@@ -170,12 +306,87 @@ def get_model_options(provider):
             "gpt-4o",
             "gpt-4o-mini"
         ],
+        "Anthropic (Claude)": [
+            "claude-3-5-sonnet-20241022",
+            "claude-3-opus-20240229",
+            "claude-3-sonnet-20240229",
+            "claude-3-haiku-20240307"
+        ],
+        "Cohere": [
+            "command-r-plus",
+            "command-r",
+            "command",
+            "command-nightly",
+            "command-light"
+        ],
         "xAI (Grok)": [
             "grok-beta",
             "grok-vision-beta"
+        ],
+        "Mistral AI": [
+            "mistral-large-latest",
+            "mistral-medium-latest",
+            "mistral-small-latest",
+            "open-mistral-7b",
+            "open-mixtral-8x7b",
+            "open-mixtral-8x22b"
+        ],
+        "Perplexity": [
+            "llama-3.1-sonar-large-128k-online",
+            "llama-3.1-sonar-small-128k-online",
+            "llama-3.1-sonar-large-128k-chat",
+            "llama-3.1-sonar-small-128k-chat",
+            "llama-3.1-8b-instruct",
+            "llama-3.1-70b-instruct"
+        ],
+        "Together AI": [
+            "meta-llama/Llama-2-70b-chat-hf",
+            "meta-llama/Llama-2-13b-chat-hf",
+            "meta-llama/Llama-2-7b-chat-hf",
+            "mistralai/Mixtral-8x7B-Instruct-v0.1",
+            "mistralai/Mistral-7B-Instruct-v0.1",
+            "togethercomputer/RedPajama-INCITE-Chat-3B-v1"
         ]
     }
     return models.get(provider, [])
+
+def get_api_info(provider):
+    """Get API information for each provider"""
+    info = {
+        "Gemini": {
+            "url": "https://makersuite.google.com/app/apikey",
+            "description": "Get your Gemini API key from Google AI Studio"
+        },
+        "OpenAI": {
+            "url": "https://platform.openai.com/api-keys", 
+            "description": "Get your OpenAI API key from OpenAI Platform"
+        },
+        "Anthropic (Claude)": {
+            "url": "https://console.anthropic.com/",
+            "description": "Get your Claude API key from Anthropic Console"
+        },
+        "Cohere": {
+            "url": "https://dashboard.cohere.ai/api-keys",
+            "description": "Get your Cohere API key from Cohere Dashboard"
+        },
+        "xAI (Grok)": {
+            "url": "https://console.x.ai/",
+            "description": "Get your xAI API key from xAI Console"
+        },
+        "Mistral AI": {
+            "url": "https://console.mistral.ai/",
+            "description": "Get your Mistral API key from Mistral Console"
+        },
+        "Perplexity": {
+            "url": "https://www.perplexity.ai/settings/api",
+            "description": "Get your Perplexity API key from Perplexity Settings"
+        },
+        "Together AI": {
+            "url": "https://api.together.xyz/settings/api-keys",
+            "description": "Get your Together AI API key from Together Platform"
+        }
+    }
+    return info.get(provider, {"url": "", "description": ""})
 
 def main():
     st.title("🎯 CV Ranking System")
@@ -188,7 +399,7 @@ def main():
         # AI Provider Selection
         ai_provider = st.selectbox(
             "Choose AI Provider",
-            ["Gemini", "OpenAI", "xAI (Grok)"],
+            ["Gemini", "OpenAI", "Anthropic (Claude)", "Cohere", "xAI (Grok)", "Mistral AI", "Perplexity", "Together AI"],
             help="Select your preferred AI provider"
         )
         
@@ -208,12 +419,9 @@ def main():
         )
         
         # API Key help text
-        if ai_provider == "Gemini":
-            st.info("Get your Gemini API key from Google AI Studio: https://makersuite.google.com/app/apikey")
-        elif ai_provider == "OpenAI":
-            st.info("Get your OpenAI API key from: https://platform.openai.com/api-keys")
-        elif ai_provider == "xAI (Grok)":
-            st.info("Get your xAI API key from: https://console.x.ai/")
+        api_info = get_api_info(ai_provider)
+        if api_info["url"]:
+            st.info(f"{api_info['description']}: {api_info['url']}")
         
         st.divider()
         
@@ -358,7 +566,7 @@ def main():
     st.markdown("""
     <div style='text-align: center; color: gray;'>
         <p>CV Ranking System - Multi-AI Provider Support</p>
-        <p>Supports Gemini, OpenAI GPT, and xAI Grok models</p>
+        <p>Supports 8 AI Providers: Gemini, OpenAI, Claude, Cohere, xAI Grok, Mistral, Perplexity & Together AI</p>
         <p>Upload your CV and get instant feedback to improve your job application success rate!</p>
     </div>
     """, unsafe_allow_html=True)
