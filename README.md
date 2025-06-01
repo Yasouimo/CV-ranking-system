@@ -4,7 +4,7 @@ A comprehensive AI-powered CV analysis tool that evaluates resumes against job d
 
 ![Project Overview](docs/pic1.png)
 
-# 🌟 Features   
+# 🌟 Features    
 
 - Multi-AI Provider Support: Choose between Google Gemini, OpenAI GPT, xAI Grok, Claude, Mistral, Preplexity, Together AI and Cohere
 - File Format Support: Upload PDF, DOCX, or TXT files
