@@ -1,4 +1,4 @@
-# 🎯 CV Ranking System
+# 🎯 CV Ranking System 
 
 A comprehensive AI-powered CV analysis tool that evaluates resumes against job descriptions using multiple AI providers (Gemini, OpenAI GPT, and xAI Grok, Claude, Mistral..). Get detailed feedback, section-wise scoring, and actionable improvement suggestions.
 
