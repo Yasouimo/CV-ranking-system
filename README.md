@@ -3,7 +3,7 @@
 A comprehensive AI-powered CV analysis tool that evaluates resumes against job descriptions using multiple AI providers (Gemini, OpenAI GPT, and xAI Grok, Claude, Mistral..). Get detailed feedback, section-wise scoring, and actionable improvement suggestions. 
 
 ![Project Overview](docs/pic1.png)
-
+ 
 # 🌟 Features
 
 - Multi-AI Provider Support: Choose between Google Gemini, OpenAI GPT, xAI Grok, Claude, Mistral, Preplexity, Together AI and Cohere 
